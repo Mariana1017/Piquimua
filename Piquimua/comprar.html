@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Piquimua</title>
+        <link rel="icon" href="imagenes/logo.png" type="image/png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    
+    <body>
+    
+    
+        <header>
+    
+            <div class="menu container">
+                <img class="logo-1" src="imagenes/logo2.png " alt="">
+                <input type="checkbox" id="menu" />
+                <label for="menu">
+                    <img src="imagenes/menu.png" class="menu-icono" alt="">
+                </label>
+                <nav class="navbar">
+                    <div class="menu-1">
+                        <ul>
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="carta.html">Carta</a></li>                            
+                        </ul>
+                    </div>
+                    <img class="logo-2" src="imagenes/logo2.png" alt="">
+                    <div class="menu-2">
+                        <ul>
+                            <li><a href="#">Siguenos</a></li>
+                        </ul>                        
+                            <a href="https://www.instagram.com/piquimua/">
+                                                 <div class="social">
+                                    <img src="imagenes/s3.svg" alt="">
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            
+            </div>
+               <title>Formulario de Compra</title>
+
+</head>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<body class="body">
+ 
+    <div class="form-container">
+        <form id="purchaseForm" method="POST" action="process.php">
+        <h2>Formulario de Compra</h2>
+        <form id="purchaseForm">           
+            <div class="form-group">
+                <label for="name">Nombre Completo</label>
+                <input type="text" id="name" name="name" required>
+                <div class="error" id="nameError"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" required>
+                <div class="error" id="phoneError"></div>
+            </div>            
+            <div class="form-group">
+                <label for="address">Dirección</label>
+                <input type="text" id="address" name="address" required>
+                <div class="error" id="addressError"></div>
+            </div>
+            <div class="form-group">
+                <label for="city">Ciudad</label>
+                <input type="text" id="city" name="city" required>
+                <div class="error" id="cityError"></div>
+            </div>
+            <div class="form-group">
+                <label for="description">Describe tu pedido</label>
+                <input type="text" id="description" name="description" required>
+                <div class="error" id="descriptionError"></div>
+            </div>  
+            
+            <div class="form-group">
+                <label for="payment">Método de Pago</label>
+                <select id="payment" name="payment" required>
+                    <option value="">Seleccione un método de pago</option>
+                    <option value="efectivo">Efectivo</option>                    
+                    <option value="transferencia">Transferencia Bancaria</option>
+                </select>
+                <div class="error" id="paymentError"></div>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" name="registro">Realizar Compra</button>
+            </div>
+        </form>
+    </form>
+    </div>
+
+
+    <script>
+        document.getElementById('purchaseForm').addEventListener('submit', function(event){
+            event.preventDefault();
+
+            let isValid = true;
+
+            
+            const name = document.getElementById('name').value;
+            const nameError = document.getElementById('nameError');
+            if (name.trim() === '') {
+                isValid = false;
+                nameError.textContent = 'El nombre es requerido.';
+            } else {
+                nameError.textContent = '';
+            }
+
+            
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                emailError.textContent = 'Ingrese un correo electrónico válido.';
+            } else {
+                emailError.textContent = '';
+            }
+
+            
+            const phone = document.getElementById('phone').value;
+            const phoneError = document.getElementById('phoneError');
+            const phonePattern = /^\d{10}$/; // Asumiendo que el teléfono tiene 10 dígitos
+            if (!phonePattern.test(phone)) {
+                isValid = false;
+                phoneError.textContent = 'Ingrese un número de teléfono válido (10 dígitos).';
+            } else {
+                phoneError.textContent = '';
+            }
+
+            
+            const address = document.getElementById('address').value;
+            const addressError = document.getElementById('addressError');
+            if (address.trim() === '') {
+                isValid = false;
+                addressError.textContent = 'La dirección es requerida.';
+            } else {
+                addressError.textContent = '';
+            }
+
+            
+            const city = document.getElementById('city').value;
+            const cityError = document.getElementById('cityError');
+            if (city.trim() === '') {
+                isValid = false;
+                cityError.textContent = 'La ciudad es requerida.';
+            } else {
+                cityError.textContent = '';
+            }
+            const description = document.getElementById('description').value;
+            const descriptionError = document.getElementById('descriptionError');
+            if (description.trim() === '') {
+             isValid = false;
+             descriptionError.textContent = 'La descripción es requerida.';
+            } else {
+            descriptionError.textContent = '';
+            }                      
+           
+            const payment = document.getElementById('payment').value;
+            const paymentError = document.getElementById('paymentError');
+            if (payment === '') {
+                isValid = false;
+                paymentError.textContent = 'Seleccione un método de pago.';
+            } else {
+                paymentError.textContent = '';
+            }
+
+            
+            if (isValid) {
+                $.ajax({
+                    url: 'process.php',
+                    type: 'POST',
+                    data: $('#purchaseForm').serialize(),
+                    success: function(response) {
+                        alert('Compra realizada con éxito, nos comunicaremos contigo 🎂');
+                        $('#purchaseForm')[0].reset(); // Resetear el formulario
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Hubo un error al procesar tu compra. Por favor, inténtalo de nuevo.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
